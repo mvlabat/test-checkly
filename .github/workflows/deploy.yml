@@ -1,0 +1,18 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    name: Initialize GitHub deployment
+    permissions:
+      deployments: write
+
+    steps:
+      - uses: chrnorm/deployment-action@v2
+        with:
+          token: '${{ github.token }}'
+          environment: 'staging'
+          environment-url: 'https://example.com'

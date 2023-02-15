@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - staging
+  check_run:
+    types: [completed]
 
 jobs:
   deploy:
@@ -10,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       deployments: write
+
+    if: (github.event_name == 'check_run' && github.event.check_run.name == 'Checkly -  API Check \#1') || github.event_name != 'check_run'
 
     steps:
       - name: Dump GitHub context

@@ -22,7 +22,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
 
       - name: Deploy to staging
-        if: github.event.type == 'push'
+        if: github.event_name == 'push'
         uses: chrnorm/deployment-action@v2
         with:
           initial-status: success
@@ -31,7 +31,7 @@ jobs:
           environment-url: 'https://example.com'
 
       - name: Deploy to production
-        if: github.event.type == 'status'
+        if: github.event_name == 'status'
         uses: chrnorm/deployment-action@v2
         with:
           initial-status: success

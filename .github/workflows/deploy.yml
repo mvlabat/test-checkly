@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     name: Initialize GitHub deployment
+    runs-on: ubuntu-latest
     permissions:
       deployments: write
 

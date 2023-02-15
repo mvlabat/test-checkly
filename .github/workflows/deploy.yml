@@ -13,7 +13,7 @@ jobs:
     permissions:
       deployments: write
 
-    if: (github.event_name == 'check_run' && github.event.check_run.name == 'Checkly -  API Check \#1') || github.event_name != 'check_run'
+    #if: (github.event_name == 'check_run' && github.event.check_run.name == 'Checkly -  API Check \#1') || github.event_name != 'check_run'
 
     steps:
       - name: Dump GitHub context

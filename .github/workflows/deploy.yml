@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - staging
-  status:
+  check_run:
+    types: [completed]
 
 jobs:
   deploy:
@@ -29,7 +30,7 @@ jobs:
           environment-url: 'https://example.com'
 
       - name: Deploy to production
-        if: github.event_name == 'status'
+        if: github.event_name == 'check_run'
         uses: chrnorm/deployment-action@v2
         with:
           initial-status: success

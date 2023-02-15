@@ -1,10 +1,9 @@
 name: Deploy
 on:
+  check_run:
   push:
     branches:
       - staging
-  check_run:
-    types: [completed]
 
 jobs:
   deploy:

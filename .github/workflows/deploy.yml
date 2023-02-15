@@ -15,6 +15,12 @@ jobs:
       deployments: write
 
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
       - name: Deploy to staging
         if: github.event.type == 'push'
         uses: chrnorm/deployment-action@v2

@@ -2,18 +2,13 @@ name: Deploy
 on:
   push:
     branches:
-      - staging
-  check_run:
-    types: [completed]
+      - main
 
 jobs:
-  deploy:
-    name: Initialize GitHub deployment
+  ohno:
+    name: Oh no!
     runs-on: ubuntu-latest
-    permissions:
-      deployments: write
-
-    if: (github.event_name == 'check_run' && github.event.check_run.name == 'Checkly -  API Check \#2') || github.event_name != 'check_run'
+    if: false
 
     steps:
       - name: Dump GitHub context
@@ -21,21 +16,15 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
+          
+  anyway:
+    name: Anyway
+    needs: [ 'ohno' ]
+    runs-on: ubuntu-latest
 
-      - name: Deploy to staging
-        if: github.event_name == 'push'
-        uses: chrnorm/deployment-action@v2
-        with:
-          initial-status: success
-          token: '${{ github.token }}'
-          environment: staging
-          environment-url: 'https://example.com'
-
-      - name: Deploy to production
-        if: github.event_name == 'check_run'
-        uses: chrnorm/deployment-action@v2
-        with:
-          initial-status: success
-          token: '${{ github.token }}'
-          environment: production
-          environment-url: 'https://example.com'
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"

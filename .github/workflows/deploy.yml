@@ -20,7 +20,7 @@ jobs:
   anyway:
     name: Anyway
     needs: [ 'ohno' ]
-    if: success() || failure()
+    if: always() && success()
     runs-on: ubuntu-latest
 
     steps:

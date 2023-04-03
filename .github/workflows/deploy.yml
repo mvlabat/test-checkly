@@ -8,7 +8,7 @@ jobs:
   ohno:
     name: Oh no!
     runs-on: ubuntu-latest
-    if: always()
+    if: always() && !cancelled()
 
     steps:
       - name: Dump GitHub context

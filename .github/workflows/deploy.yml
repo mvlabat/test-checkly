@@ -16,8 +16,11 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          sleep 30
           exit 1
+          
+      - name: Puke
+        if: always() && !cancelled()
+        run: echo "meh"
           
   anyway:
     name: Anyway

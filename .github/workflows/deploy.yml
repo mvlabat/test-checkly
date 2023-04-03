@@ -38,6 +38,7 @@ jobs:
   wtf:
     name: Wtf
     needs: [ 'anyway' ]
+    if: always() && !cancelled() && needs.anyway.result != 'failed'
     runs-on: ubuntu-latest
 
     steps:

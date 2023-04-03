@@ -16,12 +16,13 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
+          sleep 20
           exit 1
           
   anyway:
     name: Anyway
     needs: [ 'ohno' ]
-    if: always() && !failure() && !cancelled()
+    if: always() !cancelled()
     runs-on: ubuntu-latest
 
     steps:

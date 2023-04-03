@@ -22,7 +22,7 @@ jobs:
   anyway:
     name: Anyway
     needs: [ 'ohno' ]
-    if: always() !cancelled()
+    if: always() && !cancelled()
     runs-on: ubuntu-latest
 
     steps:

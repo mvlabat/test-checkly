@@ -8,7 +8,7 @@ jobs:
   ohno:
     name: Oh no!
     runs-on: ubuntu-latest
-    if: true
+    if: always()
 
     steps:
       - name: Dump GitHub context
@@ -16,7 +16,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          sleep 20
+          sleep 30
           exit 1
           
   anyway:

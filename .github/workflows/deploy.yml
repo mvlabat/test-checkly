@@ -8,7 +8,7 @@ jobs:
   ohno:
     name: Oh no!
     runs-on: ubuntu-latest
-    if: false
+    if: true
 
     steps:
       - name: Dump GitHub context

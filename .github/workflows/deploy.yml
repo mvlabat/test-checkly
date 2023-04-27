@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      test:
+        description: Test
+        type: boolean
+        required: true
 
 jobs:
   ohno:

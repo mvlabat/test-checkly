@@ -16,6 +16,14 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
+          echo "${{ inputs.test }}"
+          echo "${{ inputs.test == null }}"
+          echo "${{ inputs.test == false }}"
+          echo "${{ inputs.test == true }}"
+          echo "${{ inputs.test == "" }}"
+          echo "${{ inputs.test != false }}"
+          echo "${{ inputs.test != "false" }}"
+          echo "${{ inputs.test != "" }}"
           exit 1
           
       - name: Puke
